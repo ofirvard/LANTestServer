@@ -35,13 +35,13 @@ public class Server
 		try
 		{
 			String msg_received;
-			ServerSocket socket = new ServerSocket(1755);
-			Socket clientSocket = socket.accept();       //This is blocking. It will wait.
+			ServerSocket serverSocket = new ServerSocket(1755);
+			Socket clientSocket = serverSocket.accept();       //This is blocking. It will wait.
 			DataInputStream DIS = new DataInputStream(clientSocket.getInputStream());
 			msg_received = DIS.readUTF();
 			System.out.println(msg_received);
 			clientSocket.close();
-			socket.close();
+			serverSocket.close();
 		}
 		catch (Exception e)
 		{
