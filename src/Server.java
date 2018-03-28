@@ -35,7 +35,6 @@ public class Server
 		try
 		{
 			String msg_received;
-
 			ServerSocket socket = new ServerSocket(1755);
 			Socket clientSocket = socket.accept();       //This is blocking. It will wait.
 			DataInputStream DIS = new DataInputStream(clientSocket.getInputStream());
