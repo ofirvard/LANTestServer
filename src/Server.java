@@ -3,6 +3,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -10,9 +11,13 @@ import java.util.Arrays;
  */
 public class Server
 {
+	ArrayList<Socket> players = new ArrayList<>();
+
 	public static void main(String[] args)
 	{
 		getIPv4();
+		Thread newPlayers=new Thread();
+
 		getMsg();
 	}
 
@@ -24,8 +29,7 @@ public class Server
 			System.out.println(address.getHostName());
 			System.out.println("IPv4: " + address.getHostAddress());
 			System.out.println("Hex:  " + parseAddressToHex(address.getHostAddress()));
-		}
-		catch (UnknownHostException e)
+		} catch (UnknownHostException e)
 		{
 		}
 	}
@@ -43,8 +47,7 @@ public class Server
 			System.out.println(msg_received);
 			clientSocket.close();
 			serverSocket.close();
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 		}
 	}
